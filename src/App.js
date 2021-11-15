@@ -1,4 +1,5 @@
 import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
+import UserProvider from './context/users/Provider';
 import Home from './pages/Home';
 import About from './pages/About';
 import Products from './pages/Products';
@@ -14,11 +15,13 @@ function App() {
         <Link to='/about'>About</Link> ---
         <Link to='/products'>Products</Link>
         <hr />
-        <Routes>
-          <Route path='/' exact element={<Home/>} />
-          <Route path='/about' element={<About/>} />
-          <Route path='/products' element={<Products/>} />
-        </Routes>
+        <UserProvider>
+          <Routes>
+            <Route path='/' exact element={<Home/>} />
+            <Route path='/about' element={<About/>} />
+            <Route path='/products' element={<Products/>} />
+          </Routes>
+        </UserProvider>
       </div>
     </BrowserRouter>
   );
