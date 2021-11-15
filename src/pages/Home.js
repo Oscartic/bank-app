@@ -3,7 +3,6 @@ import UserContext from '../context/users';
 
 const Home = () => {
     const { users } = useContext(UserContext);
-
     return (
         <>
             <h3>Home Component</h3>
