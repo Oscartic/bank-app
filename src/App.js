@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserProvider from './context/users/Provider';
 import Home from './pages/Home';
-import About from './pages/About';
-import Products from './pages/Products';
+import About from './pages/Balance';
+import Products from './pages/AllData';
 import Menu from './ui/Menu';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -10,20 +10,20 @@ import './App.css';
 
 function App() {
   return (
-    <BrowserRouter>
+    // <BrowserRouter>
       <div className="App">
-        <h1>ROUTING Hello world</h1>
+        <h1>Welcome to bad banck</h1>
         <Menu />
         <hr />
-        <UserProvider>
+        {/* <UserProvider>
           <Routes>
             <Route path='/' exact element={<Home/>} />
             <Route path='/about' element={<About/>} />
             <Route path='/products' element={<Products/>} />
           </Routes>
-        </UserProvider>
+        </UserProvider> */}
       </div>
-    </BrowserRouter>
+    // </BrowserRouter>
   );
 }
 
