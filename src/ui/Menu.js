@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import UserProvider from '../context/users/Provider';
+import UserState from '../context/Users/UserState';
 import { Nav } from 'react-bootstrap';
 import Home from '../pages/Home';
 import AllData from '../pages/AllData';
@@ -38,7 +38,7 @@ const Menu = () => {
             </Nav.Item>
         </Nav>
         <BrowserRouter>
-            <UserProvider>
+            <UserState>
                 <Routes>
                     <Route path='/' exact element={<Home/>} />
                     <Route path='/all-data' element={<AllData/>} />
@@ -49,7 +49,7 @@ const Menu = () => {
                     <Route path='/withdraw' element={<Withdraw/>} />
                     <Route path='/Balance' element={<Balance/>} />
                 </Routes>
-            </UserProvider>
+            </UserState>
         </BrowserRouter>
         </>
   ); 
