@@ -11,7 +11,7 @@ const CardBank = ({header, title, text, body, status, bgcolor, txtcolor}) => {
         <Card style={{ width: '18rem' }} className={classes()}>
             <Card.Header>{header}</Card.Header>
             <Card.Body>
-                <Card.Title>{title && (<h5 className="card-title">{title}</h5>)}</Card.Title>
+                <Card.Title>{title && (<strong className="card-title">{title}</strong>)}</Card.Title>
                 <Card.Text>
                     {text && (<p className="card-text">{text}</p>)}
                     {body}

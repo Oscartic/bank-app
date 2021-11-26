@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { Button } from 'react-bootstrap';
 import UserContext from "../context/Users/UserContext";
 import CardBank from "../ui/Card";
 
@@ -12,7 +13,32 @@ const CreateAccount = () => {
     const [password, setPassword] = useState('');
 
     const context = useContext(UserContext)
+    
+    const validate = (field, label) => {
+        if(!field) {
+            setStatus(`Error: ${label}`);
+            setTimeout(() => setStatus(''), 3000);
+            return false;
+        }
+        return true;
+    }
+    
+    const handleCreate = (e) => {
+        e.preventDefault();
+        console.log(name, email, password);
+        if(!validate(name, 'name')) return;
+        if(!validate(email, 'email')) return;
+        if(!validate(password, 'password')) return;
+        context.users.push({name, email, password, balance:100});
+        setShow(false);
+    }
 
+    const clearForm = () => {
+        setName('');
+        setEmail('');
+        setPassword('');
+        setShow(true);
+    }
 
     return(
         <CardBank
@@ -31,7 +57,7 @@ const CreateAccount = () => {
                         value={name}
                         onChange={e => setName(e.currentTarget.value)}
                     /><br />
-                    Email address:
+                    Email address:<br />
                     <input 
                         type="input"
                         className="form-control"
@@ -40,11 +66,23 @@ const CreateAccount = () => {
                         value={email}
                         onChange={e => setEmail(e.currentTarget.value)}
                     /><br />
+                    Password:<br />
+                    <input 
+                        type="password"
+                        className="form-control"
+                        id="password"
+                        placeholder="Enter password"
+                        value={password}
+                        onChange={e => setPassword(e.currentTarget.value)}
+                    /><br />
+                    <Button type="submit" onClick={(e) => handleCreate(e)}>Create Account</Button>
                 </>
                 ) : (
-                <>
-                    <h3>HOLA</h3>
-                </>)}
+                    <>
+                        <h5>Success</h5>
+                        <Button type="submit" onClick={clearForm}>Create Account</Button>
+                    </>)
+                }
         />
     )
 }
